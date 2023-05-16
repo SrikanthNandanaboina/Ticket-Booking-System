@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const routes = require("./src/routes/TicketRoutes");
+const adminRoutes = require("./src/routes/AdminRoutes");
 const Ticket = require("./src/models/ticket");
 
 const app = express();
@@ -9,6 +10,7 @@ const port = 4545;
 
 app.use(express.json());
 app.use("/tickets", routes);
+app.use("/admin", adminRoutes);
 
 const { DATABASE, DATABASE_URL } = process.env;
 
