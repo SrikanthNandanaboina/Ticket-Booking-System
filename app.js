@@ -1,9 +1,14 @@
 const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const routes = require("./src/routes/TicketRoutes");
+const Ticket = require("./src/models/ticket");
 
 const app = express();
 const port = 4545;
+
+app.use(express.json());
+app.use("/tickets", routes);
 
 const { DATABASE, DATABASE_URL } = process.env;
 
@@ -20,6 +25,17 @@ mongoose
   })
   .then(() => {
     console.log("Connected to MongoDB");
+
+    for (let seat = 1; seat <= 40; seat++) {
+      Ticket.findOneAndUpdate(
+        {
+          seatNumber: seat,
+        },
+        {},
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+    }
+
     app.listen(port, () => {
       console.log(`App listening on port ${port}`);
     });
