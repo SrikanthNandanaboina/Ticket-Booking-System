@@ -2,8 +2,8 @@
 const mongoose = require("mongoose");
 
 const ticketSchema = new mongoose.Schema({
-  seatNumber: { type: Number, required: true },
-  status: { type: String, enum: ["open", "closed"], required: true },
+  seatNumber: { type: Number, required: true, unique: true, min: 1, max: 40 },
+  isBooked: { type: Boolean, default: false },
   userDetails: {
     name: { type: String },
     email: { type: String },
