@@ -1,0 +1,25 @@
+{
+  "name": "ticket-booking-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SrikanthNandanaboina/Ticket-Booking-System.git"
+  },
+  "author": "Srikanth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SrikanthNandanaboina/Ticket-Booking-System/issues"
+  },
+  "homepage": "https://github.com/SrikanthNandanaboina/Ticket-Booking-System#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0",
+    "nodemon": "^2.0.22"
+  }
+}
