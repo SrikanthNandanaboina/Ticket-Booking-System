@@ -1,7 +1,16 @@
 const Ticket = require("../models/ticket");
+const _isEmpty = require("lodash/isEmpty");
 
 const GetAllTickets = async (req, res) => {
   try {
+    const filter = {};
+
+    const { status } = req.params;
+
+    if (status === "open" || status === "closed") {
+      filter.isBooked = status !== "open";
+    }
+
     const ticket = await Ticket.find();
     res.json(ticket);
   } catch (error) {
@@ -63,34 +72,15 @@ const GetTicketData = async (req, res) => {
   }
 };
 
-const GetClosedTickets = async (req, res) => {
-  try {
-    const tickets = await Ticket.find({ isBooked: true });
-    res.json(tickets);
-  } catch (error) {
-    console.error("Error fetching closed tickets:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
-
-const GetOpenTickets = async (req, res) => {
-  try {
-    const tickets = await Ticket.find({ isBooked: false });
-    res.json(tickets);
-  } catch (error) {
-    console.error("Error fetching open tickets:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
-
 const GetPassengerInfo = async (req, res) => {
   const { seatNumber } = req.params;
 
   try {
     const ticket = await Ticket.findOne({ seatNumber });
+    const isBooked = ticket?.isBooked;
     const passengerInfo = ticket?.userDetails;
 
-    if (passengerInfo) {
+    if (isBooked) {
       // Fetch owner details from the user collection or any related collection
       res.json(passengerInfo);
     } else {
@@ -106,7 +96,5 @@ module.exports = {
   GetAllTickets,
   UpdateTicket,
   GetTicketData,
-  GetClosedTickets,
-  GetOpenTickets,
   GetPassengerInfo,
 };
