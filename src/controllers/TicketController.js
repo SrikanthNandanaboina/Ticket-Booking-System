@@ -19,6 +19,30 @@ const GetAllTickets = async (req, res) => {
   }
 };
 
+const CreateTicket = async (req, res) => {
+  const { seatNumber } = req.params;
+  const { userDetails } = req.body;
+
+  try {
+    const ticket = await Ticket.findOne({ seatNumber, isBooked: false });
+
+    if (!ticket) {
+      return res
+        .status(400)
+        .json({ error: "Seat already booked or invalid seat number" });
+    }
+
+    ticket.userDetails = userDetails;
+    ticket.isBooked = true;
+    await ticket.save();
+
+    res.json(ticket);
+  } catch (error) {
+    console.error("Error booking ticket:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 const UpdateTicket = async (req, res) => {
   const { seatNumber } = req.params;
   const { userDetails, bookTicket } = req.body;
@@ -93,6 +117,7 @@ const GetPassengerInfo = async (req, res) => {
 };
 
 module.exports = {
+  CreateTicket,
   GetAllTickets,
   UpdateTicket,
   GetTicketStatus,

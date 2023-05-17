@@ -4,6 +4,9 @@ const TicketController = require("../../controllers/TicketController");
 
 const router = express.Router();
 
+// Book ticket
+router.post("/:seatNumber/book", TicketController.CreateTicket);
+
 // Update ticket status
 router.put("/:seatNumber", TicketController.UpdateTicket);
 
