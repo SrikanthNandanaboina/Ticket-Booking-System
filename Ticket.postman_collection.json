@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "721d51e8-2fbb-4c66-9448-4868668e7ce6",
+		"name": "Ticket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14798027"
+	},
+	"item": [
+		{
+			"name": "Get All Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/get/all",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"get",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ticket",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bookTicket\": true,\n    \"userDetails\": {\n        \"name\": \"Srikanth\",\n        \"email\": \"srikanth@gmail.com\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/1",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Open Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/get/open",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"get",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Closed Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/get/closed",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"get",
+						"closed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Passenger Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/1/details",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"1",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Tickets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/admin/reset",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"admin",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Ticket Status",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

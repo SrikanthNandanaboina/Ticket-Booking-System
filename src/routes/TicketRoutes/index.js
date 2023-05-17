@@ -8,7 +8,7 @@ const router = express.Router();
 router.put("/:seatNumber", TicketController.UpdateTicket);
 
 // View ticket status
-router.get("/:seatNumber", TicketController.GetTicketData);
+router.get("/:seatNumber", TicketController.GetTicketStatus);
 
 // View all / open / closed tickets
 router.get("/get/:status", TicketController.GetAllTickets);

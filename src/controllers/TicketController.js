@@ -6,12 +6,12 @@ const GetAllTickets = async (req, res) => {
     const filter = {};
 
     const { status } = req.params;
-
+    console.log({ status });
     if (status === "open" || status === "closed") {
       filter.isBooked = status !== "open";
     }
 
-    const ticket = await Ticket.find();
+    const ticket = await Ticket.find(filter);
     res.json(ticket);
   } catch (error) {
     console.error("Error fetching ticket status:", error);
@@ -55,7 +55,7 @@ const UpdateTicket = async (req, res) => {
   }
 };
 
-const GetTicketData = async (req, res) => {
+const GetTicketStatus = async (req, res) => {
   const { seatNumber } = req.params;
 
   try {
@@ -65,7 +65,7 @@ const GetTicketData = async (req, res) => {
       return res.status(400).json({ error: "Invalid Seat Number" });
     }
 
-    res.json(ticket);
+    res.json({ status: ticket.isBooked ? "closed" : "open" });
   } catch (error) {
     console.error("Error fetching ticket status:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -95,6 +95,6 @@ const GetPassengerInfo = async (req, res) => {
 module.exports = {
   GetAllTickets,
   UpdateTicket,
-  GetTicketData,
+  GetTicketStatus,
   GetPassengerInfo,
 };
