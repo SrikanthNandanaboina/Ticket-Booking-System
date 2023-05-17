@@ -83,7 +83,7 @@ const GetOpenTickets = async (req, res) => {
   }
 };
 
-const GetTicketDetails = async (req, res) => {
+const GetPassengerInfo = async (req, res) => {
   const { seatNumber } = req.params;
 
   try {
@@ -108,5 +108,5 @@ module.exports = {
   GetTicketData,
   GetClosedTickets,
   GetOpenTickets,
-  GetTicketDetails,
+  GetPassengerInfo,
 };

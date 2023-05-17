@@ -21,6 +21,6 @@ router.get("/status/closed", TicketController.GetClosedTickets);
 router.get("/status/open", TicketController.GetOpenTickets);
 
 // View details of the person owning the ticket
-router.get("/:seatNumber/details", TicketController.GetTicketDetails);
+router.get("/:seatNumber/details", TicketController.GetPassengerInfo);
 
 module.exports = router;
