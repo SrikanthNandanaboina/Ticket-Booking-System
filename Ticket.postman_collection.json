@@ -149,7 +149,20 @@
 			"name": "Get Ticket Status",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://bus-ticket-booking-service.onrender.com/tickets/1",
+					"protocol": "https",
+					"host": [
+						"bus-ticket-booking-service",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tickets",
+						"1"
+					]
+				}
 			},
 			"response": []
 		}
