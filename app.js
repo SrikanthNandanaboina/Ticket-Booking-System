@@ -32,6 +32,7 @@ mongoose
       Ticket.findOneAndUpdate(
         {
           seatNumber: seat,
+          isBooked: false
         },
         {},
         { upsert: true, new: true, setDefaultsOnInsert: true }
